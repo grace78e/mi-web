@@ -254,4 +254,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* ──────────────────────────────────────────────────────────
+     8. FORMULARIO "SOLICITA UNA COTIZACIÓN" → abre WhatsApp
+  ────────────────────────────────────────────────────────── */
+  const quoteForm = document.getElementById('quoteForm');
+  if(quoteForm){
+    quoteForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const origen  = document.getElementById('quoteOrigen').value.trim();
+      const destino = document.getElementById('quoteDestino').value.trim();
+      const texto = `Hola, quisiera solicitar una cotización.%0AOrigen: ${encodeURIComponent(origen)}%0ADestino: ${encodeURIComponent(destino)}`;
+      window.open(`https://wa.me/593991006140?text=${texto}`, '_blank', 'noopener');
+    });
+  }
+
 }); // Fin seguro del DOMContentLoaded
